@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TextInput, Button, Platform } from 'react-native';
 
 import { Link } from '@react-navigation/native';
 
@@ -30,6 +30,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    ...Platform.select({
+      ios: {
+        backgroundColor: '#FFB6C1'
+      },
+      android: {
+        backgroundColor: '#E6E6FA'
+      },
+      default: {
+        backgroundColor: '#FFCC99'
+      }
+    })
   },
 
   text: {

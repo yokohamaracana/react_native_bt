@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -45,7 +45,7 @@ export default function App() {
             tabBarIcon: ({ color, size }) => (
               <IconOcticons name="person-add" color={color} size={size} />
             ),
-
+              
           }} />
       </Tab.Navigator>
     </NavigationContainer>
@@ -53,5 +53,4 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-
 })
