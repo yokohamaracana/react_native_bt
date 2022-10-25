@@ -13,7 +13,9 @@ export default function SignIn({ navigation }) {
         <Text style={styles.text}>Your password</Text>
         <TextInput style={styles.input} placeholder="********" secureTextEntry={true}/>
         <View style={styles.buttonContainer}>
-          <Button style={styles.button}title="Sign in" />
+          <Button style={styles.button}title="Sign in" onPress={() => {
+                            navigation.navigate('SignUp');
+            }}/>
         </View>
         <Link to={{ screen: 'SignUp', params: {} }} style={{textDecorationLine: 'underline',}}>
           Forgot your password?
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 12,
+    fontSize: 14,
     opacity: 0.5,
     alignSelf: 'flex-start',
     marginBottom: '5%',

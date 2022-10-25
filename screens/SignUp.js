@@ -4,67 +4,48 @@ import { StyleSheet, Text, View, SafeAreaView, TextInput, Button } from 'react-n
 export default function SignUp() {
     return (
         <SafeAreaView style={{ flex: 1, }}>
-            <View style={styles.container}>
-                <Text style={styles.text}>Adress</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Address"
-                />
+            <View style={styles.card}>
+                <Text style={styles.text} >Adress</Text>
+                <TextInput style={styles.input} placeholder="123 Street Rd"></TextInput>
                 <Text style={styles.text}>State</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="State"
-                />
-                <Text style={styles.text} >Your Phone Number</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="0957659884"
-                    keyboardType="numeric"
-                />
-
-                <View style={styles.buttonContainer}>
-                    <Button
-                        style={styles.button}
-                        title="Register" />
+                <TextInput style={styles.input} placeholder="Victoria"></TextInput>
+                <Text style={styles.text} >Your phone number</Text>
+                <TextInput style={styles.input} placeholder="0957659884"></TextInput>
+                <View style={styles.btn}>
+                    <Button title='Register' color="#1E90FF"></Button>
                 </View>
             </View>
-        </SafeAreaView>
+      </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    card:{
         flex: 1,
-        padding: '5%',
-        backgroundColor: '#fff',
+        padding: 20,
         alignItems: 'center',
         justifyContent: 'center',
     },
-
-    text: {
-        fontSize: 12,
-        opacity: 0.5,
-        alignSelf: 'flex-start',
+    text:{
+        fontSize: 14,
+        marginTop: 10,
         marginBottom: 10,
+        alignSelf: 'flex-start'
     },
-
-    input: {
+    input:{
+        width: "100%",
         fontSize: 18,
-        width: '100%',
-        padding: 10,
-        height: 40,
+        paddingLeft: 10,
+        paddingHorizontal: 2,
+        paddingVertical: 5,
+        borderColor: "#FF4500",
         borderWidth: 1,
-        borderColor: 'black',
+        backgroundColor: "#fff",
         marginBottom: 10,
-        borderRadius: 5,
-        borderColor: '#FF4500',
+        borderRadius: 5
     },
-
-    button: {
-    },
-    buttonContainer: {
-        width: 120,
-        height: 40
+    btn: {
+        width: 150,
+        textAlign: 'center'
     }
-
-});
+})

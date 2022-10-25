@@ -8,14 +8,16 @@ import RegisterScreen from './screens/SignUp';
 
 import IconSimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 import IconOcticons from 'react-native-vector-icons/Octicons';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="SignIn" component={SignInScreen}
+      <Stack.Navigator>
+        <Stack.Screen name="SignIn" component={SignInScreen}
           options={{
             headerTitle: 'Sign In',
             headerTitleAlign: 'center',
@@ -25,16 +27,10 @@ export default function App() {
             headerTitleStyle: {
               color: 'white',
             },
-            tabBarIcon: ({ color, size }) => (
-              <IconSimpleLineIcon name="login" color={color} size={size} />
-            ),
           }} />
-        <Tab.Screen name="SignUp" component={RegisterScreen}
+        <Stack.Screen name="SignUp" component={RegisterScreen}
           options={{
             headerTitle: 'Sign Up',
-            tabBarOptions: {
-              showIcon: false
-            },
             headerTitleAlign: 'center',
             headerStyle: {
               backgroundColor: 'green',
@@ -42,12 +38,8 @@ export default function App() {
             headerTitleStyle: {
               color: 'white',
             },
-            tabBarIcon: ({ color, size }) => (
-              <IconOcticons name="person-add" color={color} size={size} />
-            ),
-              
           }} />
-      </Tab.Navigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
