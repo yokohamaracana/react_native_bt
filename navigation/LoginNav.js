@@ -8,10 +8,32 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Login" component={Sign} />
-      <Stack.Screen name="Register" component={Registerform} />
-    </Stack.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="SignIn" component={SignInScreen}
+          options={{
+            headerTitle: 'Sign In',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#FF4500',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+          }} />
+        <Stack.Screen name="SignUp" component={RegisterScreen}
+          options={{
+            headerTitle: 'Sign Up',
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: 'green',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+          }} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 const MainNavigator = () => {

@@ -1,48 +1,58 @@
-import { Platform, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
+import IconOcticon from 'react-native-vector-icons/AntDesign';
+import axios from 'axios';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+const App = () => {
+  const renderItem = ({ item }) => (
+    <View style={{ backgroundColor: "#87CEFA", marginBottom: 10,  }}>
+      <Text style={{ fontSize: 28, padding: 5}}>Id: {item.id}</Text>
+      <Text style={{ fontSize: 20, padding: 5}}>Name: {item.name}</Text>
+      <Text style={{ fontSize: 20, padding: 5}}>Email: {item.email}</Text>
+      <Text style={{ fontSize: 20, padding: 5}}>Gender: {item.gender}</Text>
+      <Text style={{ fontSize: 20, padding: 5}}>Status: {item.status}</Text>
+    </View>
+  );
 
-import SignInScreen from './screens/SignIn'
-import RegisterScreen from './screens/SignUp';
-
-import IconSimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
-import IconOcticons from 'react-native-vector-icons/Octicons';
-import { createStackNavigator } from '@react-navigation/stack';
-
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
-export default function App() {
+  const [mydata, setData] = useState([])
+  useEffect(() => {
+    getData()
+    return () => {
+    }
+  }, [])
+  var getData = async () => {
+    var api = await axios.get('https://gorest.co.in/public/v2/users')
+    setData(api.data)
+  }
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="SignIn" component={SignInScreen}
-          options={{
-            headerTitle: 'Sign In',
-            headerTitleAlign: 'center',
-            headerStyle: {
-              backgroundColor: '#FF4500',
-            },
-            headerTitleStyle: {
-              color: 'white',
-            },
-          }} />
-        <Stack.Screen name="SignUp" component={RegisterScreen}
-          options={{
-            headerTitle: 'Sign Up',
-            headerTitleAlign: 'center',
-            headerStyle: {
-              backgroundColor: 'green',
-            },
-            headerTitleStyle: {
-              color: 'white',
-            },
-          }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <IconOcticon name="heart" color={'red'} size={50} style={{ textAlign: 'center', marginBottom: 20 }} />
+      </View>
+      <FlatList
+        data={mydata}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-})
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+    padding: 20,
+  },
+  item: {
+    backgroundColor: '#008000',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
+});
+
+export default App;

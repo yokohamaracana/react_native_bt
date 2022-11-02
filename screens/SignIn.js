@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFB6C1'
       },
       android: {
-        backgroundColor: '#E6E6FA'
+        backgroundColor: '#fff1'
       },
       default: {
         backgroundColor: '#FFCC99'
