@@ -32,17 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    ...Platform.select({
-      ios: {
-        backgroundColor: '#FFB6C1'
-      },
-      android: {
-        backgroundColor: '#fff1'
-      },
-      default: {
-        backgroundColor: '#FFCC99'
-      }
-    })
   },
 
   text: {
